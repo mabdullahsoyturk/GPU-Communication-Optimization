@@ -74,3 +74,20 @@ With GPU Direct RDMA,
 1. Data from a GPU memory in Node 0 would be directly transferred to driver memory of network card in Node 0.
 2. Then, to driver memory of network card in Node 1.
 3. Then, to GPU memory in Node 1.
+
+## Asynchronous Data Transfers
+
+* cudaMemcpy is blocking.
+* cudaMemcpyAsync is non-blocking (good time utilizing CPU)
+* cudaMemcpyAsync has two requirements:
+  * Pinned memory
+  * Stream id
+
+![Async-Transfer](figures/async_transfer.png)
+
+## Takeaways
+
+* PCI-E is efficient only starting from reasonably large data buffer.
+* UVM simplifies programming but may result in worse performance.
+* Follow the data path and avoid unnecessary copies (pinned memory, GPUDirect)
+* Compute something while data is being transferred.
