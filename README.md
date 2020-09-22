@@ -31,3 +31,46 @@ Pinned memory is allocated witn the kernel memory space and kernel memory space 
 
 ![Programming](figures/coding_memory.png)
 
+### Unified Virtual Memory (UVM)
+
+Developer views the memory as one contiguous block (As a matter fact, there are two distinct memories, i.e. host memory and device memory)
+
+![UVM](figures/unified_memory.png)
+
+- Simplifies development
+- Performance may not be very good (since it may divide memory transfer to chunks).
+- Performance is even worse for multithreaded applications.
+
+## GPU Direct and Unified Virtual Addressing
+
+### Unified Virtual Adressing
+UVA maps memories into single address space.
+
+![Unified-virtual-addressing](figures/unified_virtual_addressing.png)
+
+### Peer to Peer Transfers
+Allows copying directly from one GPU to another.
+
+![Peer-to-Peer](figures/peer_to_peer.png)
+
+Peer to peer implementation:
+
+![Peer-to-Peer](figures/peer_to_peer_impl.png)
+
+### GPU Direct Remote Direct Memory Access (RDMA)
+
+![GPU-to-Network](figures/gpu_to_network.png)
+
+Without GPU Direct RDMA, 
+
+1. Data from a GPU memory in Node 0 would be first transferred to CPU memory of Node 0.
+2. Then, to driver memory of network card in Node 0.
+3. Then, to driver memory of network card in Node 1.
+4. Then, to CPU memory of Node 1
+5. Then, to GPU memory of Node 1.
+
+With GPU Direct RDMA,
+
+1. Data from a GPU memory in Node 0 would be directly transferred to driver memory of network card in Node 0.
+2. Then, to driver memory of network card in Node 1.
+3. Then, to GPU memory in Node 1.
