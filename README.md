@@ -2,9 +2,9 @@
 
 ![Impact](figures/impact.png)
 
-## PCI Express
+## PCI (Peripheral Component Interconnect) Express
 
-Computer expansion bus. Provides point to point connection. For PCI-e v2:
+Computer expansion bus. Provides point to point connection. For example, for PCI-e v2:
 
 - Single Lane (x1)
   - 500 MB/s
