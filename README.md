@@ -85,6 +85,26 @@ With GPU Direct RDMA,
 
 ![Async-Transfer](figures/async_transfer.png)
 
+## Communication Types
+
+
+### Peer-Peer
+####  Peer-to-Peer Explicit Transfers:
+
+1. cudaMemcpy with UVA.
+2. cudaMemcpyPeer without UVA.
+3. cudaMemcpy and cudaMemcpyPeer without Peer Access.
+4. cudaMemcpy through Host.
+
+####  Peer-to-Peer Implicit Transfers:
+1. Zero-Copy Memory
+2. Unified Memory
+
+### Host to Device Transfers
+1. cudaMemcpy
+2. Zero-Copy
+3. Unified Memory
+
 ## Takeaways
 
 * PCI-E is efficient only starting from reasonably large data buffer.
